@@ -1,0 +1,124 @@
+{
+  "albums": [
+    {
+      "id": 1,
+      "title": "Sonidos de la Noche",
+      "artist": "La Luna",
+      "genre": "Ambient",
+      "release_year": 2020,
+      "albumArt": "https://picsum.photos/id/10/200/200?grayscale&blur=2",
+      "tracks": [
+        { "id": 101, "name": "Estrellas Fugaces", "duration": "3:45" },
+        { "id": 102, "name": "Vientos Nocturnos", "duration": "4:10" }
+      ]
+    },
+    {
+      "id": 2,
+      "title": "Ritmos Callejeros",
+      "artist": "Zona Urbana",
+      "genre": "Hip-Hop",
+      "release_year": 2022,
+      "albumArt": "https://picsum.photos/id/20/200/200",
+      "tracks": [
+        { "id": 201, "name": "Asfalto Vivo", "duration": "3:00" },
+        { "id": 202, "name": "Graffitis y Sueños", "duration": "3:30" }
+      ]
+    },
+    {
+      "id": 3,
+      "title": "Armonía Silenciosa",
+      "artist": "Eco Profundo",
+      "genre": "Classical",
+      "release_year": 2018,
+      "albumArt": "https://picsum.photos/id/30/200/200",
+      "tracks": [
+        { "id": 301, "name": "Sinfonía del Bosque", "duration": "5:20" },
+        { "id": 302, "name": "Murmullos de Agua", "duration": "4:00" }
+      ]
+    },
+    {
+      "id": 4,
+      "title": "Electric Dreams",
+      "artist": "Synthwave Collective",
+      "genre": "Electronic",
+      "release_year": 2023,
+      "albumArt": "https://picsum.photos/id/40/200/200",
+      "tracks": [
+        { "id": 401, "name": "Neon City", "duration": "4:05" },
+        { "id": 402, "name": "Future Echoes", "duration": "3:50" }
+      ]
+    },
+    {
+      "id": 5,
+      "title": "Blues de Medianoche",
+      "artist": "Alma Vieja",
+      "genre": "Blues",
+      "release_year": 2015,
+      "albumArt": "https://picsum.photos/id/50/200/200",
+      "tracks": [
+        { "id": 501, "name": "Camino Polvoriento", "duration": "4:30" },
+        { "id": 502, "name": "Despertar del Sol", "duration": "3:25" }
+      ]
+    },
+    {
+      "id": 6,
+      "title": "Voces del Pueblo",
+      "artist": "Raíces",
+      "genre": "Folk",
+      "release_year": 2021,
+      "albumArt": "https://picsum.photos/id/60/200/200",
+      "tracks": [
+        { "id": 601, "name": "Canción de la Tierra", "duration": "3:15" },
+        { "id": 602, "name": "Semillas de Esperanza", "duration": "2:55" }
+      ]
+    },
+    {
+      "id": 7,
+      "title": "Rock del Garaje",
+      "artist": "Los Distorsionados",
+      "genre": "Rock",
+      "release_year": 2019,
+      "albumArt": "https://picsum.photos/id/70/200/200",
+      "tracks": [
+        { "id": 701, "name": "Fuego en el Escenario", "duration": "3:50" },
+        { "id": 702, "name": "Solo de Guitarra", "duration": "4:20" }
+      ]
+    },
+    {
+      "id": 8,
+      "title": "Jazz en la Ciudad",
+      "artist": "Armonía Nocturna",
+      "genre": "Jazz",
+      "release_year": 2017,
+      "albumArt": "https://picsum.photos/id/80/200/200",
+      "tracks": [
+        { "id": 801, "name": "Saxofón Bajo la Lluvia", "duration": "5:00" },
+        { "id": 802, "name": "Café y Melodías", "duration": "3:40" }
+      ]
+    },
+    {
+      "id": 9,
+      "title": "Cumbia Sabrosa",
+      "artist": "La Orquesta Tropical",
+      "genre": "Latin",
+      "release_year": 2023,
+      "albumArt": "https://picsum.photos/id/90/200/200",
+      "tracks": [
+        { "id": 901, "name": "Baila Conmigo", "duration": "3:00" },
+        { "id": 902, "name": "Ritmo Caliente", "duration": "2:45" }
+      ]
+    },
+    {
+      "id": 10,
+      "title": "Heavy Metal Thunder",
+      "artist": "Iron Roar",
+      "genre": "Metal",
+      "release_year": 2016,
+      "albumArt": "https://picsum.photos/id/100/200/200",
+      "tracks": [
+        { "id": 1001, "name": "Riffs de Guerra", "duration": "4:50" },
+        { "id": 1002, "name": "Grito de Libertad", "duration": "3:10" }
+      ]
+    }
+  ]
+}

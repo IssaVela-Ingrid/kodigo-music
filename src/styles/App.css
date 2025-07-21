@@ -1,0 +1,226 @@
+/* --- Reglas Generales para Responsividad --- */
+/* Limitar el ancho de la raíz para evitar que el contenido se estire demasiado en pantallas muy grandes */
+#root {
+  max-width: 1280px; /* Ya lo tienes, es bueno */
+  margin: 0 auto;    /* Centra el contenido */
+  padding: 1rem;     /* Reduce el padding para pantallas pequeñas */
+  text-align: center;
+  box-sizing: border-box; /* Asegura que el padding no añada ancho extra */
+}
+
+/* El contenedor principal de cada página */
+.page-content {
+  padding: 1.5rem 1rem; /* Padding responsivo */
+  max-width: 100%; /* Asegura que no desborde */
+  box-sizing: border-box;
+}
+
+/* --- Encabezado (Header) --- */
+.app-header {
+  display: flex;
+  flex-direction: column; /* Columna por defecto en móviles */
+  align-items: center;
+  padding: 1rem;
+  background-color: #333; /* Color de fondo del header */
+  color: white;
+  width: 100%; /* Ocupar todo el ancho */
+  box-sizing: border-box;
+}
+
+.app-header .logo a {
+  font-size: 1.8em; /* Tamaño de fuente responsivo */
+  color: #61dafbaa; /* Color del logo */
+  text-decoration: none;
+  margin-bottom: 0.5rem; /* Espacio debajo del logo en móviles */
+}
+
+.main-nav ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex; /* Para que los ítems estén en fila */
+  flex-direction: column; /* En columna por defecto en móviles */
+  align-items: center;
+  gap: 0.8rem; /* Espacio entre los ítems */
+}
+
+.main-nav li a {
+  color: white;
+  text-decoration: none;
+  font-size: 1.1em; /* Tamaño de fuente para la navegación */
+  padding: 0.5rem 1rem;
+  display: block; /* Para que el padding funcione bien */
+}
+
+.main-nav li a:hover {
+  background-color: #555;
+  border-radius: 4px;
+}
+
+/* --- Diseño para Tablets y Pantallas Medianas (ej. 768px y más) --- */
+@media (min-width: 768px) {
+  .app-header {
+    flex-direction: row; /* En fila en pantallas más grandes */
+    justify-content: space-between; /* Espacio entre logo y nav */
+    padding: 1rem 2rem;
+  }
+
+  .app-header .logo {
+    margin-bottom: 0; /* Elimina el margen inferior si está en fila */
+  }
+
+  .main-nav ul {
+    flex-direction: row; /* Los ítems de navegación en fila */
+    gap: 1.5rem;
+  }
+
+  .page-content {
+    padding: 2rem; /* Más padding en pantallas grandes */
+  }
+}
+
+/* --- Cuadrícula de Música (Music Grid) --- */
+.music-grid {
+  display: flex;
+  flex-wrap: wrap; /* Permite que las tarjetas salten a la siguiente fila */
+  justify-content: center; /* Centra las tarjetas */
+  gap: 1.5rem; /* Espacio entre las tarjetas */
+  padding: 1rem; /* Pequeño padding para el grid */
+}
+
+/* Estilos de las Tarjetas de Música */
+.music-card {
+  background-color: #1a1a1a;
+  border-radius: 8px;
+  padding: 1rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  width: 100%; /* Por defecto, ocupa todo el ancho disponible */
+  max-width: 250px; /* Limita el ancho máximo para que no se estiren demasiado */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  transition: transform 0.2s;
+}
+
+.music-card:hover {
+  transform: translateY(-5px);
+}
+
+.music-card .album-art {
+  width: 100%; /* La imagen ocupa todo el ancho de la tarjeta */
+  max-width: 180px; /* Limita el tamaño de la imagen */
+  height: auto;
+  border-radius: 4px;
+  margin-bottom: 0.8rem;
+}
+
+.music-card h3 {
+  margin: 0.5rem 0;
+  font-size: 1.2em;
+  color: #61dafbaa;
+}
+
+.music-card p {
+  margin: 0;
+  font-size: 0.9em;
+  color: #aaa;
+}
+
+
+/* --- Media Queries para la cuadrícula --- */
+/* Para 2 columnas en pantallas medianas (ej. tabletas) */
+@media (min-width: 600px) {
+  .music-grid {
+    grid-template-columns: repeat(2, 1fr); /* Dos columnas */
+    justify-content: space-around; /* Distribuye el espacio */
+  }
+  .music-card {
+    width: calc(50% - 1.5rem); /* Dos columnas con gap */
+  }
+}
+
+/* Para 3 columnas en pantallas grandes (ej. escritorio) */
+@media (min-width: 900px) {
+  .music-grid {
+    grid-template-columns: repeat(3, 1fr); /* Tres columnas */
+  }
+  .music-card {
+    width: calc(33.33% - 1.5rem); /* Tres columnas con gap */
+  }
+}
+
+/* Para 4 columnas en pantallas muy grandes */
+@media (min-width: 1200px) {
+  .music-grid {
+    grid-template-columns: repeat(4, 1fr); /* Cuatro columnas */
+  }
+  .music-card {
+    width: calc(25% - 1.5rem); /* Cuatro columnas con gap */
+  }
+}
+
+
+/* --- Formulario de Contacto (ContactPage) --- */
+.contact-form {
+  max-width: 600px; /* Limitar el ancho en pantallas grandes */
+  margin: 2rem auto; /* Centrar y dar margen */
+  padding: 2rem;
+  background-color: #1a1a1a;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  text-align: left;
+}
+
+.form-group {
+  margin-bottom: 1.5rem;
+}
+
+.form-group label {
+  display: block;
+  margin-bottom: 0.5rem;
+  font-weight: bold;
+  color: #61dafbaa; /* Color de las etiquetas */
+}
+
+.form-group input[type="text"],
+.form-group input[type="email"],
+.form-group textarea {
+  width: 100%;
+  padding: 0.8rem;
+  border: 1px solid #555;
+  border-radius: 4px;
+  background-color: #333;
+  color: white;
+  box-sizing: border-box; /* Incluye padding en el ancho */
+  font-size: 1em;
+}
+
+.form-group input:focus,
+.form-group textarea:focus {
+  outline: none;
+  border-color: #646cff;
+  box-shadow: 0 0 0 2px rgba(100, 108, 255, 0.5);
+}
+
+.error-message {
+  color: #ff6b6b; /* Un rojo para mensajes de error */
+  font-size: 0.9em;
+  margin-top: 0.5rem;
+}
+
+.submit-button {
+  background-color: #61dafbaa; /* Color de botón para enviar */
+  color: #242424;
+  padding: 0.8rem 1.5rem;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 1.1em;
+  font-weight: bold;
+  transition: background-color 0.25s;
+}
+
+.submit-button:hover {
+  background-color: #4CAF50; /* Un verde un poco más oscuro al pasar el ratón */
+}
