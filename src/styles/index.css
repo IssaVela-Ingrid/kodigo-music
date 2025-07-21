@@ -1,68 +1,152 @@
+
 :root {
-  font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
+  /* Variables de color para el tema Verde y Negro */
+  --primary-bg: #121212; /* Negro muy oscuro para el fondo principal */
+  --secondary-bg: #1A1A1A; /* Negro ligeramente más claro para secciones o tarjetas */
+  --accent-green: #39FF14; /* Verde neón vibrante */
+  --light-green: #6AFF5E; /* Un verde un poco más suave, para texto secundario o enlaces */
+  --text-color: #E0E0E0; /* Gris muy claro para texto principal */
+  --secondary-text-color: #A0A0A0; /* Gris medio para texto menos importante */
+  --button-bg-dark: #2C2C2C; /* Fondo oscuro para botones, se diferencia del fondo */
+  --button-hover-bg: var(--accent-green); /* Fondo verde neón para botones al pasar el ratón */
+  --button-hover-text: var(--primary-bg); /* Texto oscuro para botones al pasar el ratón */
+  --link-color: var(--light-green); /* Color de enlaces */
+  --link-hover-color: var(--accent-green); /* Color de enlaces al pasar el ratón */
+  --border-color: #444444; /* Color para bordes sutiles */
+  --error-color: #FF6347; /* Rojo para mensajes de error */
+
+  /* Configuración de fuente global */
+  font-family: 'Inter', system-ui, Avenir, Helvetica, Arial, sans-serif;
   line-height: 1.5;
   font-weight: 400;
 
-  color-scheme: light dark;
-  color: rgba(255, 255, 255, 0.87);
-  background-color: #242424;
+  /* Aplicación de las variables a la raíz para el tema oscuro por defecto */
+  color-scheme: dark;
+  color: var(--text-color);
+  background-color: var(--primary-bg);
 
+  /* Optimización de fuente */
   font-synthesis: none;
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
-a {
-  font-weight: 500;
-  color: #646cff;
-  text-decoration: inherit;
-}
-a:hover {
-  color: #535bf2;
-}
-
+/* Estilos para el cuerpo - ocupa toda la pantalla y es un contenedor flex */
 body {
   margin: 0;
   display: flex;
-  place-items: center;
-  min-width: 320px;
-  min-height: 100vh;
+  flex-direction: column; /* Apila Header, Main, Footer verticalmente */
+  min-width: 320px; /* Ancho mínimo para compatibilidad con móviles */
+  min-height: 100vh; /* Ocupa toda la altura de la ventana */
+  background-color: var(--primary-bg); /* Asegura el color de fondo principal */
+  color: var(--text-color); /* Color de texto base */
+  overflow-x: hidden; /* Previene el scroll horizontal no deseado */
+}
+
+/* Estilos de enlaces */
+a {
+  font-weight: 500;
+  color: var(--link-color);
+  text-decoration: none; /* Quitamos el subrayado por defecto para una estética más limpia */
+  transition: color 0.25s ease-in-out; /* Transición suave para el cambio de color */
+}
+a:hover {
+  color: var(--link-hover-color);
+}
+a:focus,
+a:focus-visible {
+  outline: 2px solid var(--accent-green); /* Delineado de enfoque verde para accesibilidad */
+  outline-offset: 2px; /* Pequeño espacio entre el elemento y el delineado */
+}
+
+/* Estilos de encabezados */
+h1, h2, h3, h4, h5, h6 {
+  color: var(--accent-green); /* Encabezados en verde neón para destacar */
+  line-height: 1.1;
+  margin-top: 1em; /* Espacio superior */
+  margin-bottom: 0.5em; /* Espacio inferior */
 }
 
 h1 {
   font-size: 3.2em;
-  line-height: 1.1;
 }
 
+/* Estilos de botones */
 button {
   border-radius: 8px;
-  border: 1px solid transparent;
-  padding: 0.6em 1.2em;
-  font-size: 1em;
-  font-weight: 500;
+  border: 1px solid var(--accent-green); /* Borde verde por defecto */
+  padding: 0.8em 1.5em; /* Un poco más de padding para mejor área de clic */
+  font-size: 1.1em; /* Un poco más grande para mejor visibilidad */
+  font-weight: 600; /* Texto más audaz */
   font-family: inherit;
-  background-color: #1a1a1a;
+  background-color: var(--button-bg-dark); /* Fondo oscuro del botón */
+  color: var(--accent-green); /* Texto del botón en verde neón */
   cursor: pointer;
-  transition: border-color 0.25s;
+  transition: background-color 0.25s, color 0.25s, border-color 0.25s, box-shadow 0.25s;
+  box-shadow: 0 2px 4px rgba(0, 255, 0, 0.2); /* Sutil sombra verde para un efecto "flotante" */
 }
 button:hover {
-  border-color: #646cff;
+  background-color: var(--button-hover-bg); /* Fondo verde al pasar el ratón */
+  color: var(--button-hover-text); /* Texto oscuro al pasar el ratón */
+  border-color: var(--button-hover-bg); /* Borde se vuelve verde también */
+  box-shadow: 0 4px 8px rgba(0, 255, 0, 0.4); /* Sombra más pronunciada al pasar el ratón */
 }
 button:focus,
 button:focus-visible {
-  outline: 4px auto -webkit-focus-ring-color;
+  outline: 4px auto var(--accent-green); /* Delineado de enfoque verde */
 }
 
+/* Media Query para el esquema de color claro (si es necesario) */
 @media (prefers-color-scheme: light) {
   :root {
-    color: #213547;
-    background-color: #ffffff;
+    --primary-bg: #F0F0F0; /* Fondo claro */
+    --secondary-bg: #FFFFFF; /* Blanco para elementos secundarios */
+    --accent-green: #008000; /* Un verde más tradicional para acentos */
+    --light-green: #3CB371; /* Otro verde claro */
+    --text-color: #333333; /* Texto oscuro */
+    --secondary-text-color: #666666; /* Texto secundario oscuro */
+    --button-bg-dark: #E0E0E0; /* Fondo de botón claro */
+    --button-hover-bg: #90EE90; /* Verde claro al pasar el ratón */
+    --button-hover-text: #121212; /* Texto muy oscuro al pasar el ratón */
+    --link-color: #2E8B57; /* Verde para enlaces */
+    --link-hover-color: #006400; /* Verde oscuro al pasar el ratón */
   }
+
   a:hover {
-    color: #747bff;
+    color: var(--link-hover-color);
   }
   button {
-    background-color: #f9f9f9;
+    background-color: var(--button-bg-dark);
+    color: var(--accent-green);
+    border-color: var(--accent-green);
+    box-shadow: 0 2px 4px rgba(0, 128, 0, 0.2);
+  }
+  button:hover {
+    background-color: var(--button-hover-bg);
+    color: var(--button-hover-text);
+    border-color: var(--button-hover-bg);
+    box-shadow: 0 4px 8px rgba(0, 128, 0, 0.4);
+  }
+}
+
+/* Media Queries para ajustes globales de tipografía */
+@media (max-width: 768px) {
+  h1 {
+    font-size: 2.5em; /* Reduce el tamaño del h1 en pantallas medianas */
+  }
+  button {
+    padding: 0.7em 1.3em;
+    font-size: 1em;
+  }
+}
+
+@media (max-width: 480px) {
+  h1 {
+    font-size: 2em; /* Reduce aún más el tamaño del h1 en móviles */
+  }
+  button {
+    padding: 0.6em 1em;
+    font-size: 0.9em;
   }
 }

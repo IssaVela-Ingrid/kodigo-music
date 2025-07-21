@@ -1,21 +1,19 @@
 import React, { useState, useEffect } from 'react';
 import MusicCard from '../components/MusicCard.tsx';
-import '../styles/App.css';
+import '../styles/App.css'; // Asegúrate de que este CSS se cargue para los estilos del carrusel
 
 interface MusicItem {
   id: number;
   title: string;
   artist: string;
   albumArt: string;
-  // Puedes añadir más propiedades si las usas de tu db.json
-  // genre?: string;
-  // release_year?: number;
 }
 
 function HomePage() {
   const [featuredMusic, setFeaturedMusic] = useState<MusicItem[]>([]);
   const [loading, setLoading] = useState<boolean>(true);
   const [error, setError] = useState<string | null>(null);
+  const [currentSlide, setCurrentSlide] = useState(0); // Estado para controlar el slide actual del carrusel
 
   useEffect(() => {
     const fetchMusic = async () => {
@@ -23,7 +21,6 @@ function HomePage() {
         setLoading(true);
         setError(null);
 
-        // *** CAMBIO CLAVE: Usa la URL de tu JSON Server local ***
         const url = 'http://localhost:3001/albums'; // El endpoint para tus álbumes
 
         const response = await fetch(url);
@@ -37,7 +34,7 @@ function HomePage() {
             id: album.id,
             title: album.title,
             artist: album.artist,
-            albumArt: album.albumArt, // Ahora usa la URL de la imagen de tu db.json
+            albumArt: album.albumArt,
           }));
           setFeaturedMusic(musicCardsData);
         } else {
@@ -55,6 +52,25 @@ function HomePage() {
 
     fetchMusic();
   }, []);
+
+  // Lógica para el carrusel
+  const nextSlide = () => {
+    setCurrentSlide((prevSlide) => (prevSlide + 1) % featuredMusic.length);
+  };
+
+  const prevSlide = () => {
+    setCurrentSlide((prevSlide) => (prevSlide - 1 + featuredMusic.length) % featuredMusic.length);
+  };
+
+  // Efecto para el auto-avance del carrusel (opcional)
+  useEffect(() => {
+    if (featuredMusic.length > 0) {
+      const interval = setInterval(() => {
+        nextSlide();
+      }, 5000); // Cambia de slide cada 5 segundos
+      return () => clearInterval(interval); // Limpia el intervalo al desmontar el componente
+    }
+  }, [featuredMusic, currentSlide]); // Dependencias para reiniciar el intervalo si la música o el slide cambian
 
   if (loading) {
     return (
@@ -79,6 +95,30 @@ function HomePage() {
     <div className="page-content home-page">
       <h1>Bienvenido a Kodigo Music</h1>
       <p>Explora tu mundo musical. Escucha tus canciones favoritas en cualquier momento y lugar.</p>
+
+      {/* --- Carrusel de Música Destacada --- */}
+      {featuredMusic.length > 0 && (
+        <div className="carousel-container">
+          <div
+            className="carousel-slides"
+            style={{ transform: `translateX(-${currentSlide * 100}%)` }}
+          >
+            {featuredMusic.map((music, index) => (
+              <div key={music.id} className="carousel-slide">
+                <img src={music.albumArt} alt={`Portada de ${music.title}`} />
+                <h2>{music.title}</h2>
+                <p>{music.artist}</p>
+              </div>
+            ))}
+          </div>
+          <button className="carousel-button prev" onClick={prevSlide}>
+            &#10094; {/* Flecha izquierda */}
+          </button>
+          <button className="carousel-button next" onClick={nextSlide}>
+            &#10095; {/* Flecha derecha */}
+          </button>
+        </div>
+      )}
 
       <h2>Música Destacada (Desde tu API Local)</h2>
       {featuredMusic.length > 0 ? (

@@ -120,5 +120,35 @@
         { "id": 1002, "name": "Grito de Libertad", "duration": "3:10" }
       ]
     }
+  ],
+  "playlists": [
+    {
+      "id": 1,
+      "name": "Mis Favoritas",
+      "description": "Las canciones que más me gustan.",
+      "coverArt": "https://picsum.photos/id/110/300/300",
+      "songCount": 15
+    },
+    {
+      "id": 2,
+      "name": "Para Relajarse",
+      "description": "Música suave para desconectar.",
+      "coverArt": "https://picsum.photos/id/111/300/300",
+      "songCount": 10
+    },
+    {
+      "id": 3,
+      "name": "Entrenamiento",
+      "description": "Ritmos para motivarte.",
+      "coverArt": "https://picsum.photos/id/112/300/300",
+      "songCount": 20
+    },
+    {
+      "id": 4,
+      "name": "Clásicos del Rock",
+      "description": "Lo mejor del rock de todos los tiempos.",
+      "coverArt": "https://picsum.photos/id/113/300/300",
+      "songCount": 12
+    }
   ]
 }
