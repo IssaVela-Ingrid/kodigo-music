@@ -3,7 +3,7 @@ import { Routes, Route } from 'react-router-dom';
 import HomePage from './pages/HomePage.tsx';
 import AboutPage from './pages/AboutPage.tsx';
 import ContactPage from './pages/ContactPage.tsx';
-import PlaylistsPage from './pages/PlaylistsPage.tsx'; // Importa la nueva página de Playlists
+import PlaylistsPage from './pages/PlaylistsPage.tsx'; // 
 import Header from './components/Header.tsx';
 import Footer from './components/Footer.tsx';
 import './styles/App.css';

@@ -8,9 +8,7 @@ interface MusicItem {
   title: string;
   artist: string;
   albumArt: string;
-  // Añade otras propiedades si las necesitas de tu tabla de Supabase
-  // genre?: string;
-  // release_year?: number;
+
 }
 
 function HomePage() {
