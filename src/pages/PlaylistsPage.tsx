@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import  { useState, useEffect } from 'react';
 import '../styles/App.css';
 import { supabase } from '../supabaseClient.ts'; // Importa el cliente de Supabase
 

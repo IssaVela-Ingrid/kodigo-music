@@ -1,4 +1,4 @@
-import React from 'react';
+//import React from 'react';
 import { Link } from 'react-router-dom'; // Asegúrate de importar Link
 import '../styles/App.css'; // Asegúrate de que este CSS se cargue
 
