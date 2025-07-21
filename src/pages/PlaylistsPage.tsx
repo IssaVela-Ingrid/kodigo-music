@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
-import '../styles/App.css'; // Asegúrate de que este CSS se cargue
+import '../styles/App.css';
+import { supabase } from '../supabaseClient.ts'; // Importa el cliente de Supabase
 
 // Definimos la interfaz para los elementos de la playlist
 interface PlaylistItem {
@@ -21,32 +22,25 @@ function PlaylistsPage() {
         setLoading(true);
         setError(null);
 
-        // URL para el endpoint de playlists en tu JSON Server
-        const url = 'http://localhost:3001/playlists'; 
+        // --- CAMBIO CLAVE: Cargar datos desde Supabase ---
+        const { data, error: supabaseError } = await supabase
+          .from('playlists') // Nombre de tu tabla en Supabase
+          .select('id, name, description, coverArt, songCount'); // Selecciona las columnas
 
-        const response = await fetch(url);
-        if (!response.ok) {
-          throw new Error(`HTTP error! status: ${response.status}`);
+        if (supabaseError) {
+          throw new Error(supabaseError.message);
         }
-        const data = await response.json();
 
         if (data && data.length > 0) {
-          const playlistsData: PlaylistItem[] = data.map((playlist: any) => ({
-            id: playlist.id,
-            name: playlist.name,
-            description: playlist.description,
-            coverArt: playlist.coverArt,
-            songCount: playlist.songCount || 0, // Asegura que songCount tenga un valor por defecto
-          }));
-          setPlaylists(playlistsData);
+          setPlaylists(data as PlaylistItem[]);
         } else {
           setPlaylists([]);
-          console.warn('No se encontraron listas de reproducción en tu API local.');
+          console.warn('No se encontraron listas de reproducción en Supabase.');
         }
 
       } catch (e: any) {
-        console.error("Error al cargar listas de reproducción:", e);
-        setError(`Fallo al cargar las listas de reproducción desde tu API local: ${e.message}`);
+        console.error("Error al cargar listas de reproducción desde Supabase:", e);
+        setError(`Fallo al cargar las listas de reproducción: ${e.message}. Asegúrate de que Supabase esté configurado y los datos existan.`);
       } finally {
         setLoading(false);
       }
@@ -59,7 +53,7 @@ function PlaylistsPage() {
     return (
       <div className="page-content playlists-page">
         <h1>Cargando Listas de Reproducción...</h1>
-        <p>Obteniendo datos de tu API local (JSON Server).</p>
+        <p>Obteniendo datos desde Supabase.</p>
       </div>
     );
   }
@@ -69,7 +63,6 @@ function PlaylistsPage() {
       <div className="page-content playlists-page">
         <h1>Error</h1>
         <p>{error}</p>
-        <p>Asegúrate de que JSON Server esté ejecutándose en http://localhost:3001/playlists</p>
       </div>
     );
   }

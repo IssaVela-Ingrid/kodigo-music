@@ -22,3 +22,9 @@ dist-ssr
 *.njsproj
 *.sln
 *.sw?
+
+# .gitignore
+
+# ... otras entradas existentes ...
+
+.env.local
